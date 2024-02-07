@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.skillsBlock {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 96px 0;
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+
+}
+
+.description {
+    text-align: center;
+    font-size: 19px;
+    line-height: 24px;
+}
+
+.h4 {
+    font-size: 32px;
+    margin: 0 0 48px;
+    font-weight: normal;
+}
+
+.tech {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    min-width: 890px;
+    width: 100%;
+}
+
+.technologies {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+    margin-right: 100px;
+
+}
+
+.h5 {
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 46px;
+}
+
+.techAndExp {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 96px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.descriptionTech {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    box-sizing: border-box;
+    font-size: 19px;
+}
+
+.techEl {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.targetTech {
+    transform: rotate(45deg);
+    transition: 0.5s;
+}
+
+.experience {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.techAndExp {
+    display: flex;
+    justify-content: space-around;
+
+
+}
+
+.descriptionTech {
+    width: 100%;
+    background-color: white;
+    border-radius: 18px;
+}
+
+.description {
+    width: 600px;
+    margin: 0 0 48px;
+}
+
+.rotateText {
+    transform: rotate(-45deg);
+    transition: 0.5s;
+}
+
+.textInEl {
+    transition: 0.5s;
+}

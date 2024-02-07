@@ -1,0 +1,102 @@
+.projects {
+    padding: 96px;
+    padding-bottom: 180px;
+    min-height: 100vh;
+    height: min-content;
+    background-color: #050810;
+    box-sizing: border-box;
+
+}
+
+.h6 {
+    font-size: 48px;
+    font-weight: normal;
+    margin: 0;
+    color: white;
+    margin-bottom: 80px;
+}
+
+.img {
+    width: 700px;
+    height: 350px;
+    border-radius: 24px;
+    background-color: white;
+    transform-style: preserve-3d;
+    /* Вказуємо, щоб дочірні елементи спадали за властивостю transform */
+    transition: transform 0.5s ease;
+    /* Додаємо плавний перехід для ефектності */
+    transform: perspective(800px) rotateY(25deg) scale(.8) rotateX(10deg);
+    transition: all .6s ease;
+    box-shadow: 0 56px 110px -25px hsla(225, 2%, 62%, .42), 0 32px 73px -28px hsla(225, 2%, 62%, .08);
+
+}
+
+.img:hover {
+    transform: perspective(800px) rotateY(-15deg) translateY(-50px) rotateX(10deg) scale(1);
+    box-shadow: 0 22px 65px -30px hsla(225, 2%, 62%, .8)
+}
+
+.imgSecond {
+    width: 700px;
+    height: 350px;
+    border-radius: 24px;
+    background-color: white;
+    transform-style: preserve-3d;
+    /* Вказуємо, щоб дочірні елементи спадали за властивостю transform */
+    transition: transform 0.5s ease;
+    /* Додаємо плавний перехід для ефектності */
+    transform: perspective(800px) rotateY(-25deg) scale(.8) rotateX(10deg);
+    transition: all .6s ease;
+    box-shadow: 0 56px 110px -25px hsla(225, 2%, 62%, .42), 0 32px 73px -28px hsla(225, 2%, 62%, .08);
+}
+
+.imgSecond:hover {
+    transform: perspective(800px) rotateY(15deg) translateY(50px) rotateX(10deg) scale(1);
+    box-shadow: 0 22px 65px -30px hsla(225, 2%, 62%, .8)
+}
+
+.project {
+    display: flex;
+    perspective: 2000px;
+    justify-content: space-around;
+    margin-bottom: 68px
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 600px;
+}
+
+.name {
+    font-size: 26px;
+    color: white;
+    text-align: center;
+    margin: 0 0 36px;
+}
+
+.description {
+    font-size: 19px;
+    color: white;
+    text-align: center;
+    margin: 0 0 36px;
+}
+
+.projectsBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    font-size: 19px;
+    width: min-content;
+    height: min-content;
+    padding: 8px 56px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    margin: 0 auto;
+    text-decoration: none;
+}
