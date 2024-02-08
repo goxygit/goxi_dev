@@ -1,8 +1,9 @@
 import { Element, scroller } from 'react-scroll'
 import s from './main.module.css'
-import { useScroll, useSpring } from 'react-spring';
+import { Transition, useScroll, useSpring } from 'react-spring';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { motion } from 'framer-motion'
 const hobbies = [
     [
         {
@@ -14,13 +15,13 @@ const hobbies = [
             img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990655/css-3-icon_fp87qq.png'
         },
         {
-            name: "JavaScrypt",
+            name: "JavaScript",
             img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990659/png-transparent-react-logo-javascript-redux-vuejs-angular-angularjs-expressjs-front-and-back-ends-thumbnail_paujix.png'
         },
     ],
     [
         {
-            name: "TypeScrypt",
+            name: "TypeScript",
             img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990679/Typescript_logo_2020.svg_dfleuy.png'
         },
         {
@@ -53,7 +54,16 @@ const AboutComponent = () => {
     const [scrollLock, setScrollLock] = useState(false);
     const [isBottom, setIsBottom] = useState(false)
     const [prevScroll, setPrevScroll] = useState(0)
+    const [animationKey, setAnimationKey] = useState(Date.now());
+
     const [isScroll, setIsScroll] = useState<boolean>(false)
+    useEffect(() => {
+        setAnimationKey(Date.now()); // Обновляем ключ для запуска анимации
+
+        // Здесь можно добавить логику для запуска анимации появления новых элементов
+    }, [currentIndex]);
+
+
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
@@ -111,34 +121,82 @@ const AboutComponent = () => {
         };
     }, [window.scrollY]);
 
+    const textAnimation = {
+        hidden: {
+            y: 200,
+            opacity: 0
+        },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.3
+            }
+
+        }
+    }
+    const iconAnimation = {
+        hidden: {
+            opacity: 0,
+            scale: 0
+        },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                delay: 0.2,
+                duration: 0.2
+            }
+        }
+    };
 
     return (
         // <Element name='About'>
-        <div className={s.aboutContainer}>
+        <motion.section
+
+            className={s.aboutContainer}
+        >
             <div id='About' className={s.container}>
                 <div className={classNames(s.about, { [s.fixed]: scrollLock }, { [s.bottom]: isBottom })}>
-                    <h2 className={s.h2}>A LITTLE BIT ABOUT ME</h2>
-                    <img className={s.img} src="" alt="" />
-                    <p className={s.description}>
+                    <motion.h2
+                        initial='hidden'
+                        whileInView='visible'
+                        variants={textAnimation} className={s.h2}>A LITTLE BIT ABOUT ME</motion.h2>
+                    <motion.img initial='hidden'
+                        whileInView='visible'
+                        variants={textAnimation} className={s.img} src="" alt="" />
+                    <motion.p
+                        initial='hidden'
+                        whileInView='visible'
+                        variants={textAnimation} className={s.description}>
                         Hey there, I'm Oleg, a frontend guy with less than two years of coding under my belt. I'm all about making websites not just work, but look cool too. Got this specific idea in my head that I'm itching to bring to life. Always on the lookout for new challenges and creative opportunities in this exciting field! 😊✨
-                    </p>
+                    </motion.p>
 
-                    <div className={s.hobbiesBlock}>
+                    < motion.div initial='hidden'
+                        whileInView='visible'
+                        variants={textAnimation} className={s.hobbiesBlock}>
                         <h3 className={s.h3}>MY HOBBIES</h3>
-                        <div className={classNames(s.hobbies,)}>
+                        <div
+                            className={classNames(s.hobbies,)}>
                             {
-                                hobbies[currentIndex]?.map((el) => (
-                                    <div className={s.hobbie}>
+                                hobbies[currentIndex]?.map((el, index) => (
+                                    <motion.div
+                                        initial='hidden'
+                                        whileInView='visible'
+                                        key={animationKey + index}
+                                        variants={iconAnimation}
+                                        className={classNames(s.hobbie, s.icons)}
+                                    >
                                         <img className={s.icon} src={el.img} alt="" />
                                         <p className={s.text}>{el.name}</p>
-                                    </div>
+                                    </motion.div>
                                 ))
                             }
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
-        </div>
+        </motion.section>
         // </Element>
 
     )

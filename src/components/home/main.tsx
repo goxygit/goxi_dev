@@ -3,8 +3,6 @@ import s from './main.module.css'
 import { Element, Link, animateScroll as scroll, scroller } from "react-scroll";
 import CirclesCanvas from './circles';
 import classNames from 'classnames';
-import { useInView } from 'react-intersection-observer';
-
 const Home = () => {
     const [heightY, setHeightY] = useState<number>()
     const [isScroll, setIsScroll] = useState<boolean>(false)
@@ -41,7 +39,7 @@ const Home = () => {
     }, [heightY])
     return (
         <Element name='Home'>
-            <div className={s.home}>
+            <section className={s.home}>
 
                 <div className={classNames(s.text, { [s.bottomText]: heightY && heightY > pageHeight })}>
                     <div className={classNames(s.stripes)}>
@@ -55,14 +53,14 @@ const Home = () => {
                         spy={true}
                         smooth={true}
                         offset={0}
-                        duration={500}
+                        duration={1000}
 
                     >
                         <img className={s.img} src="https://res.cloudinary.com/dztha3hpj/image/upload/v1706795706/free-arrow-down-icon-3101-thumb_ip4t0j.png" alt="" />
                     </Link>
                 </div>
 
-            </div>
+            </section>
         </Element>
     )
 }

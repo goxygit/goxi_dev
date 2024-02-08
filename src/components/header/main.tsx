@@ -7,15 +7,13 @@ const links = [
         name: "About",
     },
     {
-        name: "Skills",
+        name: "Contacts",
+
     },
     {
         name: "Project",
     },
-    {
-        name: "Contacts",
 
-    },
 ]
 const Header = () => {
     const [isAtTop, setIsAtTop] = useState(true);
@@ -45,7 +43,7 @@ const Header = () => {
 
     useEffect(() => {
         function handleScroll() {
-            if (window.scrollY === 0) {
+            if (window.scrollY < window.innerHeight) {
                 setIsAtTop(true);
             } else {
                 setIsAtTop(false);

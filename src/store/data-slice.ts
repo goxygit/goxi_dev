@@ -10,9 +10,13 @@ export type project = {
     description: string
     link: string
 }
-
+type link = {
+    link: string
+    img: string
+}
 type dataType = {
     projects: project[]
+    links: link[]
 }
 type initialState = {
     data: dataType,

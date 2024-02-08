@@ -5,12 +5,9 @@ import { fetchData } from './store/data-slice';
 import { useSelector } from 'react-redux';
 import Home from './components/home/main';
 import AboutComponent from './components/about/main';
-import SkillsComponents from './components/skills/main';
 import ProjectsComponent from './components/projects/main';
-import Footer from './components/footer/main';
 import Header from './components/header/main';
-import Slider from 'react-slick';
-
+import FooterComponent from './components/contacts/main';
 function App() {
   //@ts-ignore
   const { status } = useSelector((state: RootState) => state.data)
@@ -33,14 +30,10 @@ function App() {
           ? <main className={s.main}>
             <Header />
             <Home />
-
             <AboutComponent />
-
-            <SkillsComponents />
+            <FooterComponent />
             <ProjectsComponent />
-
-            {/* <Footer /> */}
-          </main> :
+          </main > :
           <>Loading</>
       }
     </>
