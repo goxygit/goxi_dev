@@ -86,6 +86,10 @@ const CircleCanvas = () => {
                 }
             }
         };
+        const resizeCanvas = () => {
+            canvas.width = canvas.width
+        };
+        resizeCanvas();
 
         animate();
         if (screenWidth <= 768) {
@@ -96,14 +100,10 @@ const CircleCanvas = () => {
             window.addEventListener('mousemove', handleMouseMove);
 
         return () => {
-            if (screenWidth <= 768) {
-                window.removeEventListener('touchmove', handleMouseMove);
-                window.removeEventListener('touchend', handleTouchEnd);
-
-            }
-            else
-                window.removeEventListener('mousemove', handleMouseMove);
-
+            window.removeEventListener('resize', resizeCanvas);
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('touchmove', handleMouseMove);
+            window.removeEventListener('touchend', handleTouchEnd);
         };
     }, [mousePos]);
 
