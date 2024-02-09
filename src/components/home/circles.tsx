@@ -15,6 +15,19 @@ const CircleCanvas = () => {
     useEffect(() => {
         const canvas: any = canvasRef.current;
         if (!canvas) return;
+        const screenWidth = window.innerWidth;
+        if (screenWidth <= 768) {
+            canvas.width = 500
+            canvas.height = 350
+        }
+        if (screenWidth <= 425) {
+            canvas.width = 400
+            canvas.height = 250
+        }
+        if (screenWidth <= 375) {
+            canvas.width = 300
+            canvas.height = 200
+        }
         const rect = canvas.getBoundingClientRect();
         const handleMouseMove = (event: any) => {
             setMousePos({
@@ -29,7 +42,12 @@ const CircleCanvas = () => {
             context.save();
             context.translate(x, y);
             context.rotate(angle);
-            context.fillRect(-length / 2, 0, length, 3);
+            if (screenWidth <= 375) {
+                context.fillRect(-length / 2, 0, length, 2);
+            }
+            else {
+                context.fillRect(-length / 2, 0, length, 3);
+            }
             context.restore();
         };
 
@@ -50,7 +68,12 @@ const CircleCanvas = () => {
                     const dy = y - mousePos.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     const angle = Math.atan2(dy, dx);
-                    const length = Math.min(20, Math.max(lineLength, lineLength * 1000 / (distance + 1)));
+                    let length
+                    if (screenWidth <= 375) {
+                        length = Math.min(15, Math.max(lineLength, lineLength * 1000 / (distance + 1)));
+                    }
+                    else
+                        length = Math.min(20, Math.max(lineLength, lineLength * 1000 / (distance + 1)));
                     drawLine(x, y, length, angle);
 
                 }

@@ -8768,6 +8768,11 @@ react-konva@^18.2.10:
     react-reconciler "~0.29.0"
     scheduler "^0.23.0"
 
+react-mailto@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-mailto/-/react-mailto-0.4.0.tgz#2229cb60fca3552273f82e4de96c83f2d12c0d5f"
+  integrity sha512-jFm+7EEfwTPTU/b929+sxUR5W9/cj9A8k4Oozr1uYe8ilNgA04MbQC/1ej0OSR/iGXYXyULa/mNYt0NSZR3VqA==
+
 react-page-scroller@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/react-page-scroller/-/react-page-scroller-3.0.1.tgz#d1f9faa5d756d1cafde47be2c39d07493172978e"

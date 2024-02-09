@@ -1,5 +1,6 @@
 .about {
     position: absolute;
+    z-index: 20;
     top: 0;
     left: 0;
     right: 0;
@@ -25,9 +26,24 @@
 
 .container {
     height: 300vh;
-    background-color: white;
+    color: white;
     position: relative;
+    background-color: hsl(210deg, 30%, 8%);
 
+
+
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    /* цвет и прозрачность затемнения */
 }
 
 .topEls {
@@ -68,8 +84,9 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: #f0f0f0;
     width: 100%;
+    background-color: rgb(51, 51, 51);
+    box-sizing: border-box;
 }
 
 .hobbies {
@@ -114,5 +131,37 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width:425px) {
+    .about {
+        width: 380px;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 16px;
+    }
+
+    .hobbie {
+        width: 100px;
+    }
+}
+
+@media (max-width:375px) {
+    .about {
+        width: 300px;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 16px;
+    }
+
+    .h2 {
+        font-size: 26px;
     }
 }

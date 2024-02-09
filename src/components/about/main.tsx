@@ -16,7 +16,7 @@ const hobbies = [
         },
         {
             name: "JavaScript",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990659/png-transparent-react-logo-javascript-redux-vuejs-angular-angularjs-expressjs-front-and-back-ends-thumbnail_paujix.png'
+            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1707405215/javascript-3_hvpipu.png'
         },
     ],
     [
@@ -30,7 +30,7 @@ const hobbies = [
         },
         {
             name: "React",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990697/React-icon.svg_j9rmtf.png'
+            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1707405141/5838696_slekxs.png'
         },
     ],
     [
@@ -175,7 +175,7 @@ const AboutComponent = () => {
                     < motion.div initial='hidden'
                         whileInView='visible'
                         variants={textAnimation} className={s.hobbiesBlock}>
-                        <h3 className={s.h3}>MY HOBBIES</h3>
+                        <h3 className={s.h3}>MY TECH STACK</h3>
                         <div
                             className={classNames(s.hobbies,)}>
                             {

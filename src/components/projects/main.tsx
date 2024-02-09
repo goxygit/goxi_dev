@@ -45,7 +45,7 @@ const ProjectsComponent = () => {
                             ) :
                                 <motion.div
                                     initial='hidden'
-                                    whileInView='visible' variants={textAnimation} className={s.project} >
+                                    whileInView='visible' variants={textAnimation} className={s.projectSecond} >
                                     <div className={s.info}>
                                         <p className={s.name}>{el.name}</p>
                                         <p className={s.description}>

@@ -13,6 +13,7 @@ export type project = {
 type link = {
     link: string
     img: string
+    name: string
 }
 type dataType = {
     projects: project[]
