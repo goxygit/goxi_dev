@@ -14,7 +14,7 @@ const CircleCanvas = () => {
             canvas.width = 500
             canvas.height = 350
         }
-        if (screenWidth <= 425) {
+        if (screenWidth <= 440) {
             canvas.width = 400
             canvas.height = 250
         }
@@ -69,29 +69,41 @@ const CircleCanvas = () => {
             context.fillStyle = gradient;
 
             context.clearRect(0, 0, canvas.width, canvas.height);
+
+            const linesToDraw = [];
+            const screenWidth = window.innerWidth;
+
             for (let x = 0; x < canvas.width; x += lineSpacing) {
                 for (let y = 0; y < canvas.height; y += lineSpacing) {
                     const dx = x - mousePos.x;
                     const dy = y - mousePos.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     const angle = Math.atan2(dy, dx);
-                    let length
+                    let length;
+
                     if (screenWidth <= 375) {
                         length = Math.min(15, Math.max(lineLength, lineLength * 1000 / (distance + 2)));
-                    }
-                    else
+                    } else {
                         length = Math.min(20, Math.max(lineLength, lineLength * 1000 / (distance + 2)));
-                    drawLine(x, y, length, angle);
+                    }
 
+                    linesToDraw.push({ x, y, length, angle });
                 }
             }
+
+            context.save();
+            context.lineCap = 'round';
+            for (const line of linesToDraw) {
+                drawLine(line.x, line.y, line.length, line.angle);
+            }
+            context.restore();
         };
         const resizeCanvas = () => {
             canvas.width = canvas.width
         };
         resizeCanvas();
 
-        animate();
+        requestAnimationFrame(animate);
         if (screenWidth <= 768) {
             window.addEventListener('touchmove', handleMouseMove);
             window.addEventListener('touchend', handleTouchEnd);

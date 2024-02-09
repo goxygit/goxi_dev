@@ -90,6 +90,9 @@
     height: 32px;
     bottom: 24px;
     filter: invert() brightness(70%);
+    left: 50%;
+    transform: translateX(-50%);
+
     cursor: pointer;
     transition: 0.2s;
 }
@@ -121,7 +124,7 @@
     }
 }
 
-@media (max-width:425px) {
+@media (max-width:440px) {
     .name {
         font-size: 28px;
     }

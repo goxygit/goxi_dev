@@ -153,27 +153,24 @@ const AboutComponent = () => {
     return (
         // <Element name='About'>
         <motion.section
-
+            initial='hidden'
+            whileInView='visible'
             className={s.aboutContainer}
         >
             <div id='About' className={s.container}>
                 <div className={classNames(s.about, { [s.fixed]: scrollLock }, { [s.bottom]: isBottom })}>
                     <motion.h2
-                        initial='hidden'
-                        whileInView='visible'
+
                         variants={textAnimation} className={s.h2}>A LITTLE BIT ABOUT ME</motion.h2>
-                    <motion.img initial='hidden'
-                        whileInView='visible'
+                    <motion.img
                         variants={textAnimation} className={s.img} src="" alt="" />
                     <motion.p
-                        initial='hidden'
-                        whileInView='visible'
+
                         variants={textAnimation} className={s.description}>
                         Hey there, I'm Oleg, a frontend guy with less than two years of coding under my belt. I'm all about making websites not just work, but look cool too. Got this specific idea in my head that I'm itching to bring to life. Always on the lookout for new challenges and creative opportunities in this exciting field! 😊✨
                     </motion.p>
 
-                    < motion.div initial='hidden'
-                        whileInView='visible'
+                    < motion.div
                         variants={textAnimation} className={s.hobbiesBlock}>
                         <h3 className={s.h3}>MY TECH STACK</h3>
                         <div
@@ -181,8 +178,7 @@ const AboutComponent = () => {
                             {
                                 hobbies[currentIndex]?.map((el, index) => (
                                     <motion.div
-                                        initial='hidden'
-                                        whileInView='visible'
+
                                         key={animationKey + index}
                                         variants={iconAnimation}
                                         className={classNames(s.hobbie, s.icons)}
