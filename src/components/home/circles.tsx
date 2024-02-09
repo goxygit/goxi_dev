@@ -2,15 +2,9 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import s from './main.module.css'
 const CircleCanvas = () => {
     const canvasRef = useRef(null);
-    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const [mousePos, setMousePos] = useState({ x: -1100, y: -1100 });
 
 
-    const handleScroll = useCallback((event: any) => {
-        setMousePos({
-            x: event.pageX,
-            y: event.pageY,
-        });
-    }, []);
 
     useEffect(() => {
         const canvas: any = canvasRef.current;
@@ -29,11 +23,24 @@ const CircleCanvas = () => {
             canvas.height = 200
         }
         const rect = canvas.getBoundingClientRect();
+        const handleTouchEnd = () => {
+            setMousePos({ x: -500, y: -500 })
+        };
+
         const handleMouseMove = (event: any) => {
-            setMousePos({
-                x: event.clientX - rect.left,
-                y: event.clientY - rect.top,
-            });
+            if (screenWidth <= 768) {
+                const touch = event.touches[0];
+
+                setMousePos({
+                    x: touch.clientX - rect.left,
+                    y: touch.clientY - rect.top,
+                });
+            }
+            else
+                setMousePos({
+                    x: event.clientX - rect.left,
+                    y: event.clientY - rect.top,
+                });
         }
 
         const context = canvas.getContext('2d');
@@ -70,10 +77,10 @@ const CircleCanvas = () => {
                     const angle = Math.atan2(dy, dx);
                     let length
                     if (screenWidth <= 375) {
-                        length = Math.min(15, Math.max(lineLength, lineLength * 1000 / (distance + 1)));
+                        length = Math.min(15, Math.max(lineLength, lineLength * 1000 / (distance + 2)));
                     }
                     else
-                        length = Math.min(20, Math.max(lineLength, lineLength * 1000 / (distance + 1)));
+                        length = Math.min(20, Math.max(lineLength, lineLength * 1000 / (distance + 2)));
                     drawLine(x, y, length, angle);
 
                 }
@@ -81,10 +88,21 @@ const CircleCanvas = () => {
         };
 
         animate();
-        window.addEventListener('mousemove', handleMouseMove);
+        if (screenWidth <= 768) {
+            window.addEventListener('touchmove', handleMouseMove);
+            window.addEventListener('touchend', handleTouchEnd);
+        }
+        else
+            window.addEventListener('mousemove', handleMouseMove);
 
         return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
+            if (screenWidth <= 768) {
+                window.removeEventListener('touchmove', handleMouseMove);
+                window.removeEventListener('touchend', handleTouchEnd);
+
+            }
+            else
+                window.removeEventListener('mousemove', handleMouseMove);
 
         };
     }, [mousePos]);

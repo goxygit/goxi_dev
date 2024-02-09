@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import s from './main.module.css'
 import { Link, animateScroll as scroll } from "react-scroll";
 import classNames from 'classnames';
-const links = [
+import Modal from './modal';
+export const links = [
     {
         name: "About",
     },
@@ -18,7 +19,7 @@ const links = [
 const Header = () => {
     const [isAtTop, setIsAtTop] = useState(true);
     const [activeLink, setActiveLink] = useState('');
-
+    const [openModal, setOpenModal] = useState(false)
     const handleScroll = () => {
         const scrollY = window.scrollY || document.documentElement.scrollTop;
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -58,28 +59,32 @@ const Header = () => {
     }, []);
 
     return (
-        <header className={classNames(s.header, { [s.head]: !isAtTop })}>
-            <span className={s.dev}>Medichi</span>
-            <ul className={s.links}>
-                {
-                    links.map((el) => (
-                        <li className={s.li}>
-                            <Link activeClass={s.active}
-                                to={el.name}
-                                spy={true}
-                                smooth={true}
-                                offset={0}
-                                duration={1000}
-                                className={s.link}
-                            >
-                                {el.name}
-                            </Link>
-                        </li>
-                    ))
-                }
+        <div className={s.container}>
+            <header className={classNames(s.header, { [s.head]: !isAtTop })}>
+                <span className={s.dev}>Medichi</span>
+                <ul className={s.links}>
+                    {
+                        links.map((el) => (
+                            <li className={s.li}>
+                                <Link activeClass={s.active}
+                                    to={el.name}
+                                    spy={true}
+                                    smooth={true}
+                                    offset={0}
+                                    duration={1000}
+                                    className={s.link}
+                                >
+                                    {el.name}
+                                </Link>
+                            </li>
+                        ))
+                    }
 
-            </ul>
-        </header>
+                </ul>
+                <Modal isOpen={openModal} />
+                <button onClick={() => setOpenModal(prev => !prev)} className={classNames(s.button, { [s.activeButton]: openModal })}>Menu</button>
+            </header>
+        </div>
     )
 }
 export default Header
