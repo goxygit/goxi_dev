@@ -4,123 +4,15 @@ import { Transition, useScroll, useSpring } from 'react-spring';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { motion } from 'framer-motion'
-const hobbies = [
-    [
-        {
-            name: "HTML",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990567/html-icon_urd4vw.webp'
-        },
-        {
-            name: "CSS",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990655/css-3-icon_fp87qq.png'
-        },
-        {
-            name: "JavaScript",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1707405215/javascript-3_hvpipu.png'
-        },
-    ],
-    [
-        {
-            name: "TypeScript",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990679/Typescript_logo_2020.svg_dfleuy.png'
-        },
-        {
-            name: "SCSS",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990831/sass_fqzslq.png'
-        },
-        {
-            name: "React",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1707405141/5838696_slekxs.png'
-        },
-    ],
-    [
-        {
-            name: "Next.js",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990734/nextjs-icon-512x512-11yvtwzn_nuyau7.png'
-        },
-        {
-            name: "GitHub",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706439059/github_iofjda.png'
-        },
-        {
-            name: "FireBase",
-            img: 'https://res.cloudinary.com/dztha3hpj/image/upload/v1706990861/firebase-1-logo-png-transparent_kejm1z.png'
-        },
-    ],
+import ExperienceBlock from './experience_block';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
-]
 const AboutComponent = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentPeriod, setCurrentPeriod] = useState(null);
     const [scrollLock, setScrollLock] = useState(false);
     const [isBottom, setIsBottom] = useState(false)
-    const [prevScroll, setPrevScroll] = useState(0)
-    const [animationKey, setAnimationKey] = useState(Date.now());
-
-    const [isScroll, setIsScroll] = useState<boolean>(false)
-    useEffect(() => {
-        setAnimationKey(Date.now()); // Обновляем ключ для запуска анимации
-
-        // Здесь можно добавить логику для запуска анимации появления новых элементов
-    }, [currentIndex]);
-
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            const pageHeight = document.documentElement.clientHeight;
-            const ComponentBorders = [(pageHeight * 2), (4 * pageHeight)]
-            let ranges = [
-                { start: ComponentBorders[0], end: (ComponentBorders[0] + ((ComponentBorders[1] - ComponentBorders[0]) / 3)) },
-                { start: (ComponentBorders[0] + ((ComponentBorders[1] - ComponentBorders[0]) / 3)) + Math.min(), end: (ComponentBorders[0] + ((ComponentBorders[1] - ComponentBorders[0]) / 3) * 2) },
-                { start: (ComponentBorders[0] + ((ComponentBorders[1] - ComponentBorders[0]) / 3) * 2) + Math.min(), end: ComponentBorders[1] }
-            ];
-            // if (!isScroll && window.scrollY <= ComponentBorders[0] && prevScroll >= (ComponentBorders[0] - 20)) {
-            //     console.log('no')
-            //     scroller.scrollTo('Home', {
-            //         duration: 300,
-            //         smooth: true
-            //     })
-            //     setIsScroll(true)
-
-
-            // }
-
-            // if (window.scrollY >= ComponentBorders[0]) {
-            //     setIsScroll(false)
-            // }
-            // console.log(window.scrollY, prevScroll)
-
-            // setPrevScroll(window.scrollY)
-            // console.log(window.scrollY, prevScroll)
-
-            if (scrollY >= ComponentBorders[0] && scrollY < ComponentBorders[1]) {
-                // Заблокировать скролл, чтобы компонента не перелистывалась
-                if (scrollY <= ranges[0].end) setCurrentIndex(0)
-                else if (scrollY <= ranges[1].start && scrollY <= ranges[1].end) setCurrentIndex(1)
-                else {
-                    setCurrentIndex(2)
-                }
-                setScrollLock(true)
-                setIsBottom(false)
-
-            } else if (scrollY >= ComponentBorders[1]) {
-                setScrollLock(false)
-                setIsBottom(true)
-            } else {
-                setScrollLock(false)
-                setIsBottom(false)
-            }
-
-
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [window.scrollY]);
-
+    const { experience, about } = useSelector((state: RootState) => state.data.data)
     const textAnimation = {
         hidden: {
             y: 200,
@@ -135,20 +27,6 @@ const AboutComponent = () => {
 
         }
     }
-    const iconAnimation = {
-        hidden: {
-            opacity: 0,
-            scale: 0
-        },
-        visible: {
-            opacity: 1,
-            scale: 1,
-            transition: {
-                delay: 0.2,
-                duration: 0.2
-            }
-        }
-    };
 
     return (
         // <Element name='About'>
@@ -163,33 +41,31 @@ const AboutComponent = () => {
 
                         variants={textAnimation} className={s.h2}>A LITTLE BIT ABOUT ME</motion.h2>
                     <motion.img
-                        variants={textAnimation} className={s.img} src="" alt="" />
+                        variants={textAnimation} className={s.img} src={about.img} alt="" />
                     <motion.p
-
                         variants={textAnimation} className={s.description}>
                         Hey there, I'm Oleg, a frontend guy with less than two years of coding under my belt. I'm all about making websites not just work, but look cool too. Got this specific idea in my head that I'm itching to bring to life. Always on the lookout for new challenges and creative opportunities in this exciting field! 😊✨
                     </motion.p>
+                    {
+                        experience &&
+                        <motion.div
+                            className={s.experienceBlock}
+                        >
+                            <motion.h3 variants={textAnimation} className={s.h3}>Profeshional Experience</motion.h3>
+                            <div
+                                className={s.experience}>
+                                {experience.map((obj, i) =>
+                                    <motion.div variants={textAnimation}>
+                                        <ExperienceBlock index={i} currentPeriod={currentPeriod} setCurrentPeriod={setCurrentPeriod} obj={obj} />
 
-                    < motion.div
-                        variants={textAnimation} className={s.hobbiesBlock}>
-                        <h3 className={s.h3}>MY TECH STACK</h3>
-                        <div
-                            className={classNames(s.hobbies,)}>
-                            {
-                                hobbies[currentIndex]?.map((el, index) => (
-                                    <motion.div
-
-                                        key={animationKey + index}
-                                        variants={iconAnimation}
-                                        className={classNames(s.hobbie, s.icons)}
-                                    >
-                                        <img className={s.icon} src={el.img} alt="" />
-                                        <p className={s.text}>{el.name}</p>
                                     </motion.div>
-                                ))
-                            }
-                        </div>
-                    </motion.div>
+
+                                )}
+
+                            </div>
+                        </motion.div>
+                    }
+
                 </div>
             </div>
         </motion.section>

@@ -3,7 +3,7 @@ import s from './main.module.css'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 const FooterComponent = () => {
-    const { links } = useSelector((state: RootState) => state.data.data)
+    const { links, about } = useSelector((state: RootState) => state.data.data)
     const email = 'example@example.com'; // Замените на ваш адрес электронной почты
 
     const handleClick = () => {
@@ -23,13 +23,13 @@ const FooterComponent = () => {
                             </li>
                         ))
                     }
-                    <li onClick={handleClick} className={s.li}>
-                        <img className={s.img} src={'https://res.cloudinary.com/dztha3hpj/image/upload/v1707394639/666162_bvgndr.png'} alt="Mail" />
+                    <li onClick={handleClick} className={s.mail}>
+                        <img className={s.imgMail} src={'https://res.cloudinary.com/dztha3hpj/image/upload/v1707394639/666162_bvgndr.png'} alt="Mail" />
                     </li>
                 </ul>
                 <div className={s.cv}>
                     <p className={s.text}>CHECK MY RESUME!</p>
-                    <a className={s.linkCV} href="">CHECK</a>
+                    <a className={s.linkCV} href={about.CV}>CHECK</a>
                 </div>
             </footer>
         </Element>

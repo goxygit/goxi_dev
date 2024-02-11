@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 .about {
     position: absolute;
     z-index: 20;
@@ -25,13 +27,10 @@
 }
 
 .container {
-    height: 300vh;
+    min-height: 120vh;
     color: white;
     position: relative;
     background-color: hsl(210deg, 30%, 8%);
-
-
-
 }
 
 .container::before {
@@ -52,11 +51,6 @@
     align-items: center;
 }
 
-.description {
-    text-align: center;
-    line-height: 24px;
-    margin-bottom: 34px;
-}
 
 .container {
     position: relative;
@@ -76,7 +70,7 @@
 .h3 {
     font-weight: normal;
     text-align: center;
-    font-size: 26px;
+    font-size: 34px;
     margin: 0 0 40px;
 }
 
@@ -107,8 +101,8 @@
 }
 
 .text {
-    text-align: center;
     margin: 0;
+    width: max-content;
 }
 
 .icons {
@@ -120,6 +114,152 @@
     height: 170px;
     border-radius: 50%;
     margin-bottom: 60px;
+}
+
+.experienceBlock {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.experience {
+    display: flex;
+    flex-direction: column;
+}
+
+.periodExperience {
+    display: flex;
+    flex-direction: column;
+}
+
+.experienceButton {
+    display: flex;
+    justify-content: space-between;
+    text-align: start;
+    align-items: center;
+    width: 100%;
+    height: 54px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background-color: #490C86DE;
+    margin-bottom: 8px;
+    transition: 0.3s;
+}
+
+.text {
+    margin: 0;
+    font-size: 18px;
+}
+
+.period {
+    margin: 0 20px 0 0;
+}
+
+.dateAndImg {
+    display: flex;
+    align-items: center;
+}
+
+.containerInfo {
+    height: 0;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.infoBlock {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    width: 100%;
+
+    box-sizing: border-box;
+    border-radius: 14px;
+    margin: 12px 0;
+    background-color: #241d41;
+    padding: 20px;
+
+}
+
+.active {
+    background-color: #740cdc;
+    transition: 0.3s;
+}
+
+.visible {
+    height: 200px;
+    transition: height 0.3s;
+}
+
+.logo {
+    box-sizing: border-box;
+}
+
+.adresses {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.description {
+    margin: 0 0 18px;
+    text-align: start;
+    box-sizing: border-box;
+    font-size: 18px;
+    text-align: center;
+}
+
+.adressesText {
+    margin: 0 12px 0 0;
+    color: rgba(255, 255, 255, .75);
+}
+
+.plusButton {
+    width: 24px;
+    height: 24px;
+    filter: invert();
+    cursor: pointer;
+}
+
+.adressesLink {
+    color: rgba(255, 255, 255, .75);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.icon {
+    margin: 0;
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+}
+
+.info {
+    width: 500px;
+    box-sizing: border-box;
+
+}
+
+.ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.li {
+    height: min-content;
+    width: min-content;
+    padding: 6px 22px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    background-color: #2c3599;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 24px;
+    color: rgba(255, 255, 255, .75);
+    font-family: 'Roboto';
 }
 
 @keyframes fade-in {
@@ -135,6 +275,32 @@
 }
 
 @media (max-width:440px) {
+    .infoBlock {
+        justify-content: start;
+        flex-direction: column-reverse;
+
+    }
+
+    .experienceButton {
+        font-size: 14px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+
+    .info {
+        width: auto;
+    }
+
+    .logo {
+        margin-bottom: 24px;
+    }
+
+    .visible {
+        height: 400px;
+    }
+
     .about {
         width: 380px;
         padding: 60px 0 60px;
@@ -147,7 +313,6 @@
     .icon {
         width: 30px;
         height: 30px;
-        margin-bottom: 16px;
     }
 
     .hobbie {
@@ -181,12 +346,6 @@
 @media (max-width:375px) {
     .about {
         width: 300px;
-    }
-
-    .icon {
-        width: 30px;
-        height: 30px;
-        margin-bottom: 16px;
     }
 
 }

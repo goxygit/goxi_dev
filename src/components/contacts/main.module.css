@@ -18,7 +18,16 @@
 }
 
 .li {
-    margin-right: 24px;
+
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    margin-right: 18px;
+    cursor: pointer;
+}
+
+.mail {
     width: 32px;
     height: 32px;
     margin: 0;
@@ -27,6 +36,12 @@
 }
 
 .img {
+    width: 32px;
+    height: 32px;
+    filter: invert();
+}
+
+.imgMail {
     width: 32px;
     height: 32px;
 }
@@ -61,7 +76,7 @@
     transition: 0.3s;
 }
 
-@media (max-width:425px) {
+@media (max-width:440px) {
     .footer {
         flex-direction: column;
         justify-content: start;

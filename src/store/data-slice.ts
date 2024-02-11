@@ -15,9 +15,27 @@ type link = {
     img: string
     name: string
 }
+type tehcType = {
+    name: string
+}
+export type experience = {
+    position: string
+    logo: string
+    adresses: string
+    web_site: string
+    description: string
+    tech: tehcType[]
+    period: string
+}
+type aboutType = {
+    img: string
+    CV: string
+}
 type dataType = {
     projects: project[]
     links: link[]
+    experience: experience[]
+    about: aboutType
 }
 type initialState = {
     data: dataType,
