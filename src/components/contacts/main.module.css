@@ -8,6 +8,19 @@
     justify-content: space-between;
     box-sizing: border-box;
     padding: 40px;
+    position: relative;
+}
+
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.5);
+    /* цвет и прозрачность затемнения */
 }
 
 .ul {
@@ -15,6 +28,7 @@
     padding: 0;
     list-style-type: none;
     display: flex;
+    z-index: 51;
 }
 
 .li {
@@ -38,24 +52,26 @@
 .img {
     width: 32px;
     height: 32px;
-    filter: invert();
 }
 
 .imgMail {
     width: 32px;
     height: 32px;
+    filter: invert();
 }
 
 .cv {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 51;
 }
 
 .text {
     color: black;
     margin: 0;
     font-size: 22px;
+    filter: invert();
 }
 
 .linkCV {
@@ -68,12 +84,14 @@
     margin-top: 12px;
     transition: 0.3s;
     font-family: 19px;
+    filter: invert();
 }
 
 .linkCV:hover {
     background-color: #000;
     color: #fff;
     transition: 0.3s;
+    filter: invert();
 }
 
 @media (max-width:440px) {

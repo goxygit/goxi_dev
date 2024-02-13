@@ -35,7 +35,7 @@ const AboutComponent = () => {
             whileInView='visible'
             className={s.aboutContainer}
         >
-            <div id='About' className={s.container}>
+            <div id='About' className={classNames(s.container, { [s.currentPeriod]: currentPeriod && currentPeriod >= 0 })}>
                 <div className={classNames(s.about, { [s.fixed]: scrollLock }, { [s.bottom]: isBottom })}>
                     <motion.h2
 

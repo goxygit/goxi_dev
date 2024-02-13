@@ -27,7 +27,8 @@
 }
 
 .container {
-    min-height: 120vh;
+    max-height: 120vh;
+    min-height: 1000px;
     color: white;
     position: relative;
     background-color: hsl(210deg, 30%, 8%);
@@ -206,7 +207,6 @@
     text-align: start;
     box-sizing: border-box;
     font-size: 18px;
-    text-align: center;
 }
 
 .adressesText {
@@ -235,9 +235,8 @@
 }
 
 .info {
-    width: 500px;
     box-sizing: border-box;
-
+    margin-right: 12px;
 }
 
 .ul {

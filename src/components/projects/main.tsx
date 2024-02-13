@@ -39,7 +39,7 @@ const ProjectsComponent = () => {
                                         <p className={s.description}>
                                             {el.description}
                                         </p>
-                                        <a href={el.link} className={s.btn}>Visit</a>
+                                        <motion.a href={el.link} className={s.btn}>Visit</motion.a>
                                     </div>
                                 </motion.div>
                             ) :
@@ -51,7 +51,7 @@ const ProjectsComponent = () => {
                                         <p className={s.description}>
                                             {el.description}
                                         </p>
-                                        <a href={el.link} className={s.btn}>Visit</a>
+                                        <motion.a href={el.link} className={s.btn}>Visit</motion.a>
                                     </div>
                                     <img src={el.img} className={s.imgSecond} />
                                 </motion.div>
