@@ -8,6 +8,7 @@ import AboutComponent from './components/about/main';
 import ProjectsComponent from './components/projects/main';
 import Header from './components/header/main';
 import FooterComponent from './components/contacts/main';
+import { Loader } from './components/loading/main';
 function App() {
   //@ts-ignore
   const { status } = useSelector((state: RootState) => state.data)
@@ -15,16 +16,10 @@ function App() {
   useEffect(() => {
     dispatch(fetchData())
   }, [])
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
 
   return (
     <>
+
       {
         status === 'succeeded'
           ? <main className={s.main}>
@@ -34,7 +29,7 @@ function App() {
             <FooterComponent />
             <ProjectsComponent />
           </main > :
-          <>Loading</>
+          <Loader />
       }
     </>
 

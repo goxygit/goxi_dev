@@ -50,10 +50,10 @@ const CircleCanvas = () => {
             context.translate(x, y);
             context.rotate(angle);
             if (screenWidth <= 375) {
-                context.fillRect(-length / 2, 0, length, 2);
+                context.fillRect(-length / 2, 0, length, 1);
             }
             else {
-                context.fillRect(-length / 2, 0, length, 3);
+                context.fillRect(-length / 2, 0, length, 2);
             }
             context.restore();
         };
