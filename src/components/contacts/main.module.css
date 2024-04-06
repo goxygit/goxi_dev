@@ -9,6 +9,7 @@
     box-sizing: border-box;
     padding: 40px;
     position: relative;
+    margin-left: 8px;
 }
 
 .footer::before {

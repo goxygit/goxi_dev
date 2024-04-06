@@ -5,9 +5,7 @@ import CirclesCanvas from './circles';
 import classNames from 'classnames';
 const Home = () => {
     const [heightY, setHeightY] = useState<number>()
-    const [isScroll, setIsScroll] = useState<boolean>(false)
 
-    // const [prevScroll, setPrevScroll] = useState(0)
     const handleScroll = () => {
         const currentPosition = window.scrollY;
         setHeightY(currentPosition);
@@ -15,23 +13,9 @@ const Home = () => {
     const pageHeight = document.documentElement.clientHeight;
     useEffect(() => {
         setHeightY(window.scrollY)
-        // if (heightY && !isScroll && heightY > (pageHeight - 20) && heightY < (pageHeight * 2)) {
-        //     if (window.scrollY > prevScroll) {
-        //         scroller.scrollTo('About', {
-        //             duration: 300,
-        //             smooth: true
-        //         })
-        //         setIsScroll(true)
-
-        //     }
-        // }
 
         window.addEventListener('scroll', handleScroll);
-        // if (heightY && heightY < pageHeight) {
-        //     setIsScroll(false)
-        // }
-        // setPrevScroll(window.scrollY)
-        // Убираем обработчик события скролла при размонтировании компонента
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
