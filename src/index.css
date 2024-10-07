@@ -3,7 +3,7 @@
 
 
 :root {
-  --scrollbar-gradient: linear-gradient(to bottom, blue, purple);
+  --scrollbar-color: rgb(27, 44, 88)`;
 }
 
 body {

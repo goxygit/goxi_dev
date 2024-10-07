@@ -61,7 +61,7 @@ const Header = () => {
     return (
         <div className={s.container}>
             <header className={classNames(s.header, { [s.head]: !isAtTop })}>
-                <span className={s.dev}>Medichi</span>
+                <span className={s.dev}>Medici</span>
                 <ul className={s.links}>
                     {
                         links.map((el) => (
