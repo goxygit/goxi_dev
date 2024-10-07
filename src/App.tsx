@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import s from './App.module.css';
 import { RootState, useAppDispatch } from './store/store';
 import { fetchData } from './store/data-slice';
 import { useSelector } from 'react-redux';
@@ -51,7 +50,7 @@ function App() {
 
       {
         status === 'succeeded'
-          ? <main className={s.main} >
+          ? <main  >
             <Header />
             <Home />
             <AboutComponent />
